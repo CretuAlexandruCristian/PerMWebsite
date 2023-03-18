@@ -1,0 +1,394 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.3
+-- https://www.phpmyadmin.net/
+--
+-- Gazdă: 127.0.0.1
+-- Timp de generare: iun. 21, 2022 la 11:33 PM
+-- Versiune server: 10.4.24-MariaDB
+-- Versiune PHP: 8.1.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Bază de date: `perm`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structură tabel pentru tabel `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Eliminarea datelor din tabel `cart`
+--
+
+INSERT INTO `cart` (`id`, `product_id`, `user_id`, `quantity`) VALUES
+(48, 8, 24, 1),
+(49, 7, 24, 1),
+(50, 6, 24, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structură tabel pentru tabel `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `comment` varchar(500) NOT NULL,
+  `rating` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Eliminarea datelor din tabel `comments`
+--
+
+INSERT INTO `comments` (`id`, `product_id`, `user_id`, `comment`, `rating`) VALUES
+(3, 6, 23, 'test', 5),
+(4, 6, 24, 'test2', 5),
+(6, 4, 23, '123', 5),
+(12, 7, 23, 'slabut', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structură tabel pentru tabel `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `address_line` varchar(255) NOT NULL,
+  `country` varchar(40) NOT NULL,
+  `city` varchar(40) NOT NULL,
+  `price` int(11) NOT NULL,
+  `date_completed` date NOT NULL,
+  `payment_method` varchar(50) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `zip_code` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Eliminarea datelor din tabel `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `address_line`, `country`, `city`, `price`, `date_completed`, `payment_method`, `phone`, `zip_code`) VALUES
+(2, 24, 'Str.Poitiers Nr.23', 'Romania', 'Iasi', 177, '2022-06-18', 'Online', '122133', '84694'),
+(22, 23, 'Str.Văzduh, Nr.27C', 'Romania', 'Tomesti Iasi', 152, '2022-06-18', 'cash', '+40748515169', '707515'),
+(23, 23, 'Str.Văzduh, Nr.27C', 'Romania', 'Tomesti Iasi', 232, '2022-06-19', 'cash', '+40748515169', '707515'),
+(24, 23, 'Str.Văzduh, Nr.27C', 'Romania', 'Tomesti Iasi', 189, '2022-06-19', 'cash', '+40748515169', '707515'),
+(25, 23, 'Str.Văzduh, Nr.27C', 'Romania', 'Tomesti Iasi', 312, '2022-06-19', 'cash', '+40748515169', '707515'),
+(26, 23, 'Str.Văzduh, Nr.27C', 'Romania', 'Tomesti Iasi', 352, '2022-06-21', 'cash', '+40748515169', '707515'),
+(27, 23, 'Str.Văzduh, Nr.27C', 'Romania', 'Tomesti Iasi', 376, '2022-06-21', 'cash', '+40748515169', '707515'),
+(28, 23, 'Str.Văzduh, Nr.27C', 'Romania', 'Tomesti Iasi', 0, '2022-06-21', 'cash', '+40748515169', '707515'),
+(29, 23, 'Str.Văzduh, Nr.27C', 'Romania', 'Tomesti Iasi', 0, '2022-06-21', 'cash', '+40748515169', '707515'),
+(30, 23, 'Str.Văzduh, Nr.27C', 'Romania', 'Tomesti Iasi', 177, '2022-06-21', 'online', '+40748515169', '707515'),
+(31, 23, 'Str.Văzduh, Nr.27C', 'Romania', 'Tomesti Iasi', 177, '2022-06-21', 'online', '+40748515169', '707515'),
+(32, 23, 'Str.Văzduh Nr.27C', 'Romania', 'Iași', 0, '2022-06-21', 'cash', 'asd', '707515'),
+(33, 23, 'Str.Văzduh, Nr.27C', 'Romania', 'Tomesti Iasi', 112, '2022-06-21', 'cash', '+40748515169', '707515'),
+(34, 23, 'Str.Văzduh, Nr.27C', 'Romania', 'Tomesti Iasi', 112, '2022-06-21', 'online', '+40748515169', '707515'),
+(35, 33, 'Str.Văzduh, Nr.27C', 'Romania', 'Tomesti Iasi', 737, '2022-06-21', 'cash', '+40748515169', '707515');
+
+-- --------------------------------------------------------
+
+--
+-- Structură tabel pentru tabel `order_to_product`
+--
+
+CREATE TABLE `order_to_product` (
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Eliminarea datelor din tabel `order_to_product`
+--
+
+INSERT INTO `order_to_product` (`order_id`, `product_id`, `quantity`) VALUES
+(2, 6, 1),
+(2, 7, 1),
+(22, 4, 1),
+(22, 6, 1),
+(23, 4, 3),
+(23, 6, 1),
+(24, 7, 2),
+(24, 8, 1),
+(25, 6, 1),
+(25, 4, 5),
+(26, 4, 6),
+(26, 6, 1),
+(27, 4, 1),
+(27, 6, 3),
+(30, 7, 1),
+(30, 6, 1),
+(33, 6, 1),
+(34, 6, 1),
+(35, 6, 6),
+(35, 7, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structură tabel pentru tabel `preferences`
+--
+
+CREATE TABLE `preferences` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `preference` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Eliminarea datelor din tabel `preferences`
+--
+
+INSERT INTO `preferences` (`id`, `user_id`, `preference`) VALUES
+(8, 30, 'Work'),
+(9, 30, 'Sports'),
+(10, 30, 'Universal'),
+(11, 31, 'Work'),
+(12, 31, 'Night Time'),
+(13, 31, 'Sports'),
+(14, 31, 'Universal'),
+(15, 32, 'Work'),
+(16, 32, 'Date'),
+(17, 32, 'Universal');
+
+-- --------------------------------------------------------
+
+--
+-- Structură tabel pentru tabel `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `brand` varchar(50) NOT NULL,
+  `perfume_name` varchar(50) DEFAULT NULL,
+  `gender` varchar(50) NOT NULL,
+  `price` float DEFAULT NULL,
+  `stock` int(11) NOT NULL,
+  `top_notes` varchar(50) DEFAULT NULL,
+  `base_notes` varchar(50) DEFAULT NULL,
+  `heart_notes` varchar(50) DEFAULT NULL,
+  `launch_year` int(11) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `perfume_type` varchar(50) NOT NULL,
+  `family` varchar(50) NOT NULL,
+  `subfamily` varchar(50) NOT NULL,
+  `ingredients` varchar(200) NOT NULL,
+  `occasion` varchar(100) NOT NULL,
+  `sold` int(11) NOT NULL,
+  `season` varchar(50) NOT NULL,
+  `capacity` int(11) NOT NULL,
+  `image_name` varchar(100) DEFAULT NULL,
+  `image_name2` varchar(100) DEFAULT NULL,
+  `image_name3` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Eliminarea datelor din tabel `products`
+--
+
+INSERT INTO `products` (`id`, `brand`, `perfume_name`, `gender`, `price`, `stock`, `top_notes`, `base_notes`, `heart_notes`, `launch_year`, `description`, `perfume_type`, `family`, `subfamily`, `ingredients`, `occasion`, `sold`, `season`, `capacity`, `image_name`, `image_name2`, `image_name3`) VALUES
+(4, 'HUGO BOSS', 'Boss Bottled Night', 'Male', 40, 24, ' Bitter birch leaves, Aromatic lavender, Citric le', 'Musky louro amarelo, Vanilla, Sandalwood', ' Cardamom, Jasmine, African violet', 2010, 'BOSS Bottled Night Eau de Toilette for Men is destined to become the secret weapon in the BOSS man’s armoury of seduction, instilling him with the same compelling presence that underpins his success by day. A unique composition between elegance and seduction.\r\n\r\nAn intense and spicy aftershave with a purposeful, edgy, masculine character. Woods are key in the scent: BOSS Bottled Night Eau de Toilette for Men introduces a scent replica of a rich and exotic new wood, Louro Amarelo.', 'Eau de Toilette', 'Floral Notes', 'Floral', 'benzyl alcohol, acetone, linalool, ethanol, ethyl acetate, benzaldehyde, camphor, formaldehyde, methylene chloride and limonene', 'Work', 12, 'Autumn', 100, 'boss_bottled_night.png', 'boss_bottled_night_2.png', 'boss_bottled_night_3.png'),
+(6, 'Dior', 'Sauvage Elixir', 'Male', 112, 8, 'Grapefruit note and heart of spices', ' Sweet and smooth Woods', 'Essence of AOP lavender from Nyons', 2020, 'Sauvage Elixir is the Dior fragrance with a unique* and extreme concentration, like the quintessence of Sauvage. This fragrance for men unleashes an unexpected and surprising scent trail with notes of grapefruit, spices, organic AOP lavender and rich woods. It is an olfactory composition with astonishing strength that explores uncharted territory.', 'Extrait de Parfum', 'Floral Notes', 'Floral', 'benzyl alcohol, acetone, linalool, ethanol, ethyl acetate, benzaldehyde, camphor, formaldehyde, methylene chloride and limonene', 'Date', 14, 'Spring', 60, 'sauvage_elixir.png', 'sauvage_elixir_2.png', 'sauvage_elixir_3.png'),
+(7, 'CHANEL', 'BLEU DE CHANEL', 'Male', 65, 1, ' Woody', ' Sichuan Pepper, Bergamot', 'Vetiver, Patchouli, Ambroxan', 2015, 'A fresh fragrance body spray inspired by the aromatic-woody notes of BLEU DE CHANEL. Its travel-friendly format and light nature encourage spontaneous and generous application, at any time of day.', 'Eau de Toilette', 'Fresh Notes', 'Citrus', 'benzyl alcohol, acetone, linalool, ethanol, ethyl acetate, benzaldehyde, camphor, formaldehyde, methylene chloride and limonene', 'Work', 3, 'Summer', 30, 'bleu_de_chanel.png', NULL, NULL),
+(8, 'Dior', 'Miss Dior', 'Female', 59, 20, ' Lily-of-the-Valley, Peony Accord, Iris', 'Musks, Vanilla, Benzoin, Tonka Bean, Sandalwood', ' Centifolia Rose', 2021, 'The new Miss Dior eau de parfum brings in a wave of optimism and brims with life—echoing Miss Dior\'s very essence. Miss Dior\'s fresh and floral notes are composed like a bouquet of countless flowers with endless sparkling colours. François Demachy, Perfumer-Creator of the House of Dior, wanted to create an iridescent Rose for this fragrance that is lit up by a myriad of fresh and floral notes.', 'Eau de Parfum', 'Floral Notes', 'Soft Floral', 'benzyl alcohol, acetone, linalool, ethanol, ethyl acetate, benzaldehyde, camphor, formaldehyde, methylene chloride and limonene', 'Work', 1, 'Summer', 30, 'miss_dior.png', 'miss_dior_2.png', NULL),
+(9, 'Dior', 'J\'adore', 'Female', 88, 20, 'Bergamot, Blood Orange, Pink Pepper', 'Sandalwood', ' Centifolia Rose, Jasmine, Ylang-Ylang, Lily-of-th', 2020, 'THE NEW J\'ADORE EAU DE PARFUM INFINISSIME - INFINITELY SENSUAL\r\nThe new composition is an endless burst of flowers: Centifolia Rose, Jasmine, Ylang-Ylang, Lily-of-the-Valley, refined by the woody accents of a creamy Sandalwood and dramatically magnified by a plump and sensual Tuberose. J’adore becomes Infinissime, like its infinite floral trail.', 'Eau de Parfum', 'Floral Notes', 'Floral', '#15080/A ALCOHOL ● PARFUM (FRAGRANCE) ● AQUA (WATER) ● BENZYL SALICYLATE ● HEXYL CINNAMAL ● BUTYL METHOXYDIBENZOYLMETHANE ● LINALOOL ● LIMONENE ● HYDROXYCITRONELLAL ● CITRONELLOL ● ALPHA-ISOMETHYL ION', 'Day Time', 0, 'Summer', 50, 'j\'adore.png', 'j\'adore2.png', 'j\'adore3.png'),
+(11, 'Dior', 'Sauvage', 'Male', 52, 20, 'Sichuan Pepper, Bergamot', 'Vetiver, Patchouli, Ambroxan', 'Lavender, Geranium', 2015, 'Sauvage Eau de Toilette 100ml & new 30ml are now refillable.\r\n\r\nDior Sauvage is a radically fresh composition, dictated by a name that has the ring of a manifesto. That was the way François Demachy, Dior Perfume-Creator, wanted it: raw and noble all at once.', 'Eau de Toilette', 'Oriental Notes', 'Oriental', 'benzyl alcohol, acetone, linalool, ethanol, ethyl', 'Sports', 0, 'Spring', 30, 'sauvage_toilette.png', 'sauvage_toilette2.png', 'sauvage_toilette3.png'),
+(12, 'Paco Rabanne', '1 Million', 'Male', 47, 3, 'Peppermint, Blood Mandarin, Sparkling Fresh Fruits', 'Amber, Leather Accord', 'Rose, Musk, Cinnamon', 2008, 'Paco Rabanne\'s best selling men’s fragrance, a beautiful, spicy leather scent. A complex Eau de Toilette combining sweet, juicy mandarin and peppermint. Creating intrigue and freshness.', 'Eau de Toilette', 'Fresh Notes', 'Citrus', 'Paco Rabanne\'s best selling men’s fragrance, a beautiful, spicy leather scent. A complex Eau de Toilette combining sweet, juicy mandarin and peppermint. Creating intrigue and freshness.', 'Date', 3, 'Winter', 50, 'paco.png', 'paco2.png', 'paco3.png'),
+(13, 'Paco Rabanne', 'Invictus', 'Male', 70, 2, ' Bay Leaves, Grapefruit Peel, Marine Accord', 'Ambergris, Oakmoss', 'Patchouli, Gaïac Wood', 2016, 'Ecstatically addictive, a powerful adrenalin shot for serial winners. Power, courage, victory distilled into a daring smash-up of freshness and heat. When you’re in it to win.', 'Eau de Toilette', 'Oriental Notes', 'Woody', 'benzyl alcohol, acetone, linalool, ethanol, ethyl ', 'Night Time', 12, 'Summer', 100, 'invictus.png', 'invictus2.png', 'invictus3.png'),
+(14, 'Paco Rabanne', 'Olympea', 'Female', 51, 25, ' Ginger Lily, Jasmine, Mandarin', ' Ambergris, Sandalwood', ' Salted Vanilla', 2015, 'Drawing inspiration from the realms of Greek mythology, Paco Rabanne’s Olympéa is a heaven-scent fragrance for the modern-day goddess.\r\nA fusion of contrasts, from the salty vanilla undertones to the cashmere wood base, it will catch your attention at first spray. What starts off as sweet transforms into a more sophisticated blend of florals (jasmine, lily) and heady ambergris, which gives the scent more added versatility. Going from desk-to-dinner? This is the carry-on your handbag has been wai', 'Eau de Parfum', 'Floral Notes', 'Floral', 'benzyl alcohol, acetone, linalool, ethanol, ethyl ', 'Date', 15, 'Spring', 30, 'olympea.png', 'olympea2.png', 'olympea3.png'),
+(15, 'Paco Rabanne', 'Lady Million', 'Female', 69, 4, 'Bitter Orange, Raspberry', 'Honey, Patchouli, Amber', 'Jasmine, Orange Flower, Neroli', 2010, 'As bright as a diamond, a scent to seduce. A trail of fresh white flowers, warmed with woods. Bursting: neroli and bitter orange collide with a ripple of raspberry. Intense: orange blossom absolute and sambac jasmine. Addictive: entwined, honey and sexy patchouli.', 'Eau de Parfum', 'Fresh Notes', 'Fruity', 'benzyl alcohol, acetone, linalool, ethanol, ethyl', 'Work', 10, 'Winter', 50, 'lady.png', 'lady2.png', 'lady3.png'),
+(16, 'Tom Ford', 'Ombre Leather', 'Male', 130, 100, ' Cardamom', ' Amber, Patchouli, Moss', ' Jasmine, Leather', 2018, 'Freedom comes from within, the desert heart of the west wrapped in leather. It moves forward, untethered, through the still air of wide-open space. Dust on wind, skin on skin, Ombré Leather reveals itself like a landscape in layers, where stretches of rock transform into sunrise blonde low on the horizon.', 'Eau de Parfum', 'Woody Notes', 'Woody', 'benzyl alcohol, acetone, linalool, ethanol, ethyl', 'Anywhere', 3, 'Winter', 100, 'ombre.png', 'ombre2.png', NULL),
+(17, 'Tom Ford', 'Black Orchid', 'Male', 66, 40, 'Jasmine, Gardenia, Blackcurrant, Lemon, Bergamot, ', 'Vetiver, Patchouli, Sandalwood, Incense, Amber, Ch', 'Orchid, Spicy Notes, Fruity Notes, Lotus', 2020, 'A luxurious and sensual unisex fragrance of rich, dark accords and an alluring potion of black orchids and spice, Tom Ford Black Orchid is both modern and timeless. Bottled in fluted, black glass, Black Orchid makes an unforgettable statement of iconic style and worldly glamour.', 'Eau de Parfum', 'Woody Notes', 'Woody', 'A luxurious and sensual unisex fragrance of rich, dark accords and an alluring potion of black orchids and spice, Tom Ford Black Orchid is both modern and timeless. Bottled in fluted, black glass, Bla', 'Anywhere', 3, 'Autumn', 30, 'orchid.png', 'orchid2.png', NULL),
+(18, 'Tom Ford', 'Velvet Orchid', 'Female', 130, 15, 'Italian Bergamot, Mandarin, Rum Succan Absolute, H', 'Labdanum, Peru Balsam, Myrrh, Suede, Comoro Island', 'Jasmine, Turkish rose, Cattleva leopoldii orchid, ', 2018, 'TOM FORD VELVET ORCHID IS AN AMBER FLORAL THAT EVOLVES THE CARNAL GRANDEUR AND SEDUCTIVE POWER OF THE ICONIC TOM FORD BLACK ORCHID INTO AN UBER-FEMININE FRAGRANCE LAVISHED WITH NOTES OF COOL CITRUS, DRAMATIC PETALS, HONEY AND RUM.', 'Eau de Parfum', 'Floral Notes', 'Soft Floral', 'benzyl alcohol, acetone, linalool, ethanol, ethyl acetate, benzaldehyde, camphor, formaldehyde, methylene chloride and limonene', 'Work', 15, 'Autumn', 100, 'velvet.png', 'velvet2.png', NULL),
+(19, 'Armani', 'Diamonds For Men', 'Male', 50, 40, 'Bergamot, Sichuan Pepper', 'Vetiver, Gaiac Wood, Oak Moss, Ambrox', 'Cedarwood, Cocoa Bean, Benzoin Sumatra', 2011, 'A refined fragrance for young, urban men. In the initial aromas, the icy opening contrasts with lingering sensual, burning accents. The emblematic notes of mens fragrance are subverted with original surprising and addictive ingredients.', 'Eau de Toilette', 'Oriental Notes', 'Oriental', 'benzyl alcohol, acetone, linalool, ethanol, ethyl acetate, benzaldehyde, camphor, formaldehyde, methylene chloride and limonene', 'Sports', 10, 'Summer', 50, 'diamonds.png', 'diamonds2.png', 'diamonds3.png'),
+(20, 'Armani', 'Diamonds', 'Female', 30, 1, 'Lychee, raspberry', 'Vetiver, amber, vanilla', 'Rose, lily of the valley, patchouli, freesia', 2007, 'They say ‘diamonds are a girl’s best friend’, so why stop at a piece of lavish jewellery? Continue the budding friendship with the help of Emporio Armani Diamonds She Eau de Parfum.', 'Eau de Parfum', 'Floral Notes', 'Floral', 'benzyl alcohol, acetone, linalool, ethanol, ethyl acetate, benzaldehyde, camphor, formaldehyde, methylene chloride and limonene', 'Work', 10, 'Spring', 50, 'armani.png', 'armani2.png', 'armani3.png'),
+(21, 'Marc Jacobs', 'Dot', 'Female', 62, 20, 'Red Berries, Dragonfruit, Honeysuckle', 'Vanilla, Driftwood, Musk', 'Jasmine, Coconut Water, Orange Blossom', 2012, 'Marc Jacobs Dot Eau de Parfum is a delicate perfume which blends red berries with orange and jasmine blossom on top of a creamy vanilla, driftwood and sensual musk.', 'Eau de Parfum', 'Floral Notes', 'Soft Floral', 'benzyl alcohol, acetone, linalool, ethanol, ethyl acetate, benzaldehyde, camphor, formaldehyde, methylene chloride and limonene', 'Date', 10, 'Winter', 50, 'dot.png', 'dot2.png', 'dot3.png'),
+(22, 'Marc Jacobs', 'Perfect Intense', 'Female', 60, 1, 'Roasted Almonds, Pink Pepper, Pamplezest', 'Sesame Oil, Sandalwood New Caledonia, Cashmeran', 'Daffodil Absolute, Jasmin Sambac', 2021, 'A love letter to your authentic self, written in a rich golden ink for a scented expression of the real you. A gorgeous, denser interpretation of the exuberant, identity-affirming original, Perfect Intense Marc Jacobs is a floral perfume for women interwoven with nutty notes in a designer perfume with lashings of texture and personality.', 'Eau de Parfum', 'Floral Notes', 'Floral', 'benzyl alcohol, acetone, linalool, ethanol, ethyl acetate, benzaldehyde, camphor, formaldehyde, methylene chloride and limonene', 'Sports', 5, 'Autumn', 50, 'perfect.png', 'perfect2.png', 'perfect3.png'),
+(23, 'Yves Saint Laurent', 'Y', 'Male', 58, 12, ' Bergamot Essence, Aldehydes & Ginger Essence', ' Cedarwood Essence, Olibanum Essence & Ambergris A', ' Lavender Heart, Geranium Heart & Clary Sage Heart', 2018, 'Y Eau de Toilette, now newly renovated with new formulation and updated design. A mineral woody fragrance for men, with vibrant lavender, crisp geranium and warm cedarwood.', 'Eau de Toilette', 'Fresh Notes', 'Citrus', 'benzyl alcohol, acetone, linalool, ethanol, ethyl acetate, benzaldehyde, camphor, formaldehyde, methylene chloride and limonene', 'Day Time', 3, 'Spring', 60, 'y.png', 'y2.png', 'y3.png'),
+(24, 'Yves Saint Laurent', 'Y Le Parfum', 'Male', 74, 20, ' Grapefruit, Ginger, Elemi, Aldehydes', 'Cedarwood, Patchouli, Tonka Bean, Olibanum', 'Lavender, Clary Sage, Geranium', 2021, 'Y Le Parfum, the NEW bold and woody take on the iconic signature of the Y male fragrance franchise.\r\nThe absolute strength of a dark fougère, more intense than ever.\r\n', 'Eau de Parfum', 'Oriental Notes', 'Oriental', 'benzyl alcohol, acetone, linalool, ethanol, ethyl acetate, benzaldehyde, camphor, formaldehyde, methylene chloride and limonene', 'Night Time', 5, 'Winter', 0, 'le_parfum.png', 'le_parfum2.png', 'le_parfum3.png');
+
+-- --------------------------------------------------------
+
+--
+-- Structură tabel pentru tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(40) NOT NULL,
+  `last_name` varchar(40) NOT NULL,
+  `gender` varchar(50) NOT NULL,
+  `mail` varchar(100) NOT NULL,
+  `user_password` varchar(255) NOT NULL,
+  `is_admin` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Eliminarea datelor din tabel `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `gender`, `mail`, `user_password`, `is_admin`) VALUES
+(23, 'George', 'Dragoi', 'Male', 'stefanel_dragoi@yahoo.com', '$2y$10$P10vuVVxQ8hKhRhch6u.qu8ptPCIck5THKHmbxMEvAUbbGAWQRFnK', NULL),
+(24, 'Cretu', 'Alexandru', 'Male', 'cretualexandru1221@gmail.com', '$2y$10$AdjqemoM.NZXCw94XwQ6heWiN3/mWGM2XPJi.SMNN6COLdFeS4J46', NULL),
+(25, 'DRAGOI', 'STEFAN', 'Male', 'stefaneldragoi1329@gmail.com', '$2y$10$B64LZxfsvieVz/kXA/fe5OxubhEGgoAMC4W4myhgr/YrEcwzCI/7u', NULL),
+(26, 'DRAGOI', 'STEFAN', 'Male', 'stefaneldragoi1fas329@gmail.comasd', '$2y$10$Zwc3coZBCyeMjJpSrCe.MOsgh7/bReSifiU15KO0utY5qspZzLLsy', NULL),
+(27, 'DRAGOI', 'STEFAN', 'Male', 'stefaneldasdragoi1fas329@gmail.comasd', '$2y$10$Ojk0Cavxq.e8hD7ApbDWku2wfbbt3qusR1jFRW.WpvDoT6j10ttWS', NULL),
+(28, 'DRAGOI', 'STEFAN', 'Male', 'asdf@yahoo.com', '$2y$10$ylBQPfxpG13PMgjL/PMhbuIzaLMYXfSpNwUkNd8c5gLLZ130x1UkW', NULL),
+(29, 'DRAGOI', 'STEFAN', 'Male', 'asdf@yahoo.comasd', '$2y$10$YqFV/BkUhM9XS/UlHN.rZ.w2wlWjTJ6XxpPl7xmKPTLZL.OrCJRkG', NULL),
+(30, 'DRAGOI', 'STEFAN', 'Male', 'asdf@yahoo.comasdasd', '$2y$10$Q3L7MJCP6JBCaAR4S.kK4O.j.5Nf9bZxktVEun9Cqt7KTbkviGmYq', NULL),
+(31, 'DRAGOI', 'STEFAN', 'Male', 'asdfasd@yahoo.comasdasd', '$2y$10$0YUFs5yt0xNNWm.hUxX3Aea0055e2lVB177AugDqL.hN5gUOtkvy.', NULL),
+(32, 'George', 'Dragoi', 'Male', 'stefanel_dragoiiiiiii@yahoo.com', '$2y$10$KXXKthPEZmuo70iT5zQMz.ccU6MbocNug92es2zI8YS4OYJG9dtI6', NULL),
+(33, 'George', 'Dragoi', 'Male', 'admin@adminPerm.com', '$2y$10$/4BlNrm73jYFtgDbu9R7D.raU93uTr2yCPmJESS1I1AKZXhqYg9vG', 1);
+
+--
+-- Indexuri pentru tabele eliminate
+--
+
+--
+-- Indexuri pentru tabele `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UC_cart` (`id`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `fk_user_cart` (`user_id`),
+  ADD KEY `fk_product_cart` (`product_id`);
+
+--
+-- Indexuri pentru tabele `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `product_id` (`product_id`,`user_id`),
+  ADD KEY `FK_user_id_comment` (`user_id`);
+
+--
+-- Indexuri pentru tabele `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_user_id` (`user_id`);
+
+--
+-- Indexuri pentru tabele `order_to_product`
+--
+ALTER TABLE `order_to_product`
+  ADD KEY `fk_order_id` (`order_id`),
+  ADD KEY `fk_product_id` (`product_id`);
+
+--
+-- Indexuri pentru tabele `preferences`
+--
+ALTER TABLE `preferences`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_user_id_pref` (`user_id`);
+
+--
+-- Indexuri pentru tabele `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexuri pentru tabele `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uc_users` (`id`,`mail`),
+  ADD UNIQUE KEY `user_mail_uindex` (`mail`),
+  ADD UNIQUE KEY `mail` (`mail`);
+
+--
+-- AUTO_INCREMENT pentru tabele eliminate
+--
+
+--
+-- AUTO_INCREMENT pentru tabele `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
+-- AUTO_INCREMENT pentru tabele `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT pentru tabele `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT pentru tabele `preferences`
+--
+ALTER TABLE `preferences`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT pentru tabele `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT pentru tabele `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- Constrângeri pentru tabele eliminate
+--
+
+--
+-- Constrângeri pentru tabele `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `fk_product_cart` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_user_cart` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constrângeri pentru tabele `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `FK_product_id_comment` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `FK_user_id_comment` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constrângeri pentru tabele `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constrângeri pentru tabele `order_to_product`
+--
+ALTER TABLE `order_to_product`
+  ADD CONSTRAINT `fk_order_id` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `fk_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+
+--
+-- Constrângeri pentru tabele `preferences`
+--
+ALTER TABLE `preferences`
+  ADD CONSTRAINT `FK_user_id_pref` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+COMMIT;

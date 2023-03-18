@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="/../PerM/frontend/css/style.css"/>
+    <title>Title</title>
+</head>
+<body>
+<div class="image-login">
+    <a href="index.php"><img src="./images/logo-render.png" alt=""/></a>
+</div>
+
+<div class="comment form-wrap">
+    <h3>Bought the product? Leave a review!</h3>
+    <form action="/../PerM/backend/PermBackEnd/submit_comment.php" method="post" class="comment-form">
+        <div class="form-group">
+            <label>Please leave a rating for the product</label>
+            <div class="rate">
+                <input type="radio" id="star5" name="rate" value="5"/>
+                <label for="star5" title="text">5 stars</label>
+                <input type="radio" id="star4" name="rate" value="4"/>
+                <label for="star4" title="text">4 stars</label>
+                <input type="radio" id="star3" name="rate" value="3"/>
+                <label for="star3" title="text">3 stars</label>
+                <input type="radio" id="star2" name="rate" value="2"/>
+                <label for="star2" title="text">2 stars</label>
+                <input type="radio" id="star1" name="rate" value="1"/>
+                <label for="star1" title="text">1 star</label>
+            </div>
+            <br><br>
+        </div>
+        <div id="prod_id">
+        </div>
+        <div class="form-group">
+            <label>
+                Feedback <span><br></span>
+                <textarea cols="75" name="commentText" rows="5" style="width:100%"></textarea>
+            </label><br>
+        </div>
+        <button type="submit" name="comment" class="btn">Submit</button>
+    </form>
+</div>
+<script>
+    // GET ID FROM PAGE
+    url = window.location.search;
+    const urlParams = new URLSearchParams(url);
+    // var id = url.searchParams.get("id");
+    const id = urlParams.get("id");
+    document.getElementById('prod_id').innerHTML = '<input type="hidden" name="product_id" value="' + id + '">'
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/utilities.css"/>
+    <title>PerM | Register</title>
+</head>
+
+<body id="login-form">
+<div class="image-login">
+    <a href="index.php"><img src="./images/logo-render.png" alt=""/></a>
+</div>
+
+<div class="container-login">
+    <div class="form-wrap">
+        <h1>Sign Up</h1>
+        <br/>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <form action="../backend/PermBackEnd/register.php" method="post">
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" name="firstName" id="first-name"/>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" name="lastName" id="last-name"/>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select name="gender" id="gender">
+                    <option value="" disabled selected>Please select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="form-group check-box-group">
+                <label>Where do you want to wear your perfumes?</label><br>
+                <input type="checkbox" name="preference1" id="preference-1" value="Work">
+                <label for="preference-1">Work</label><br>
+                <input type="checkbox" name="preference2" id="preference-2" value="Date">
+                <label for="preference-2">Date</label><br>
+
+                <input type="checkbox" name="preference3" id="preference-3" value="Night Time">
+                <label for="preference-3">Night Time</label><br>
+                <input type="checkbox" name="preference4" id="preference-4" value="Day Time">
+                <label for="preference-4">Day Time</label><br>
+
+                <input type="checkbox" name="preference5" id="preference-5" value="Sports">
+                <label for="preference-5">Sports</label><br>
+                <input type="checkbox" name="preference6" id="preference-6" value="Universal">
+                <label for="preference-6">Anywhere</label><br>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email"/>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password"/>
+            </div>
+
+            <button type="submit" name="register" class="btn">Sign Up</button>
+        </form>
+
+        <div class="noaccount">
+            <p>Already have an account? <a href="login.html">Login Here</a></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

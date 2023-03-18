@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/utilities.css"/>
+    <title>PerM | Reset Password</title>
+</head>
+
+<body id="login-form">
+<div class="image-login">
+    <a href="index.php"><img src="./images/logo-render.png" alt=""/></a>
+</div>
+
+<div class="container-login">
+    <div class="form-wrap">
+        <h1>Forgot Password</h1>
+        <br/>
+        <p>Submit your email to get the password reset link.</p>
+        <form action="/../PerM/backend/PermBackEnd/send_link.php" method="post">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email"/>
+            </div>
+            <button type="submit" name="submit_email" class="btn">Send Link</button>
+        </form>
+
+    </div>
+</div>
+<footer class="footer-login">
+    <ul>
+        <li><a href="#">Account&nbsp;Information </a></li>
+        <li><a href="#">Terms&nbsp;&&nbsp;Conditions</a></li>
+        <li><a href="#">Privacy&nbsp;Policy</a></li>
+        <li>
+            <a href="#" class="last">We&nbsp;Are&nbsp;Using&nbsp;Cookies</a>
+        </li>
+    </ul>
+</footer>
+</body>
+</html>

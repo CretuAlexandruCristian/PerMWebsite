@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="shortcut icon" type="image/x-icon" href="/../PerM/frontend/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Order Details | PerM</title>
+  </head>
+  <body>
+  <nav class="navbar" id="prod-list-navbar">
+    <div class="content">
+      <div class="logo">
+        <a href="index.php"
+        ><img src="./images/logo-render.png" alt="logo"
+        /></a>
+      </div>
+      <div class="search">
+                
+        <input id="searchProduct" type="text"
+               placeholder=" Search Perfumes By Brand, Name..."
+               name="search">
+        
+   
+</div>
+      <ul class="menu-list">
+        <li>
+          <div class="icon cancel-btn">
+            <i class="fas fa-times"></i>
+          </div>
+        </li>
+
+        <li>
+          <div class="dropdown" data-dropdown>
+            <button class="link">
+              <i class="fa-solid fa-user fa-2x" data-dropdown-button></i>
+            </button>
+            <div class="dropdown-menu">
+              <a href="/../PerM/backend/PermBackEnd/profile.php" class="menu-button"
+                 id="profile">Profile</a>
+                 <a href="/../PerM/backend/PermBackEnd/logout.php" class="menu-button"
+                           id="logout">Log&nbsp;Out</a>
+             
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown" data-dropdown>
+            <button class="link">
+              <i
+                      class="fa-solid fa-cart-shopping fa-2x"
+                      data-dropdown-button
+              ></i>
+            </button>
+            <div class="dropdown-menu" id="cart">
+              <a
+                      href="/../PerM/backend/PermBackEnd/shopping-cart.php"
+                      class="menu-button"
+                      id="cart-link"
+              >My Cart</a
+              >
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown" data-dropdown>
+            <button class="link">
+              <i
+                      class="fa-solid fa-circle-info fa-2x"
+                      data-dropdown-button
+              ></i>
+            </button>
+            <div class="dropdown-menu" id="about">
+              <a href="about.html" class="menu-button" id="about-us"
+              >About Us</a
+              >
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown" data-dropdown>
+            <button class="link">
+              <i class="fas fa-comment-dots fa-2x" data-dropdown-button></i>
+            </button>
+            <div class="dropdown-menu" id="contact">
+              <a href="contact.html" class="menu-button" id="contact-us"
+              >Contact Us</a
+              >
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="icon menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+    <div class="container cart-page">
+      <table>
+        <thead>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </thead>
+        <tbody id="cartproducts">
+          
+        </tbody>
+      </table>
+
+      <div class="total-price">
+        <table>
+          <tr>
+            <td>Total</td>
+            <td id="total"></td>
+          </tr>
+        </table>
+      </div>
+    
+      <div class="wrapper">
+<div class="addressorder">
+      <p>Order Details</p>
+    </div>
+    <div class="addressdetails" id="addressdetails">
+      <!-- <div class="floatclear">
+      <p class="floatst">Strada</p>
+      <p class="floatdr">Strada frumoasa</p>
+    </div> -->
+    </div>
+
+      </div>
+    </div>
+    
+  
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Our Services</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Affiliate Program</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Get Help</h4>
+            <ul>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Shipping</a></li>
+              <li><a href="#">Returns</a></li>
+              <li><a href="#">Order Status</a></li>
+              <li><a href="#">Payment Options</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Online Shop</h4>
+            <ul>
+              <li><a href="#">Male Perfumes</a></li>
+              <li><a href="#">Female Perfumes</a></li>
+              <li><a href="#">Kids Perfumes</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const id=urlParams.get("id");
+  var URL='http://localhost/PerM/backend/PermBackEnd/index.php/order/listSingleId/'+id;
+    fetch(URL)
+    .then((res) => res.json())
+    .then((data) => {
+      document.getElementById('total').innerHTML='$'+data.price;
+      let output='';
+      output+='<div class="floatclear">'+
+      '<p class="floatst">Date Completed</p>'+
+      '<p class="floatdr">'+ data.date_completed +'</p>'+
+    '</div>';
+      output+='<div class="floatclear">'+
+      '<p class="floatst">Address</p>'+
+      '<p class="floatdr">'+ data.address_line +'</p>'+
+    '</div>';
+      output+='<div class="floatclear">'+
+      '<p class="floatst">Country</p>'+
+      '<p class="floatdr">'+ data.country +'</p>'+
+    '</div>';
+    output+='<div class="floatclear">'+
+      '<p class="floatst">City</p>'+
+      '<p class="floatdr">'+ data.city +'</p>'+
+    '</div>';
+    output+='<div class="floatclear">'+
+      '<p class="floatst">Zip Code</p>'+
+      '<p class="floatdr">'+ data.zip_code +'</p>'+
+    '</div>';
+    output+='<div class="floatclear">'+
+      '<p class="floatst">Phone Number</p>'+
+      '<p class="floatdr">'+ data.phone +'</p>'+
+    '</div>';
+    
+    document.getElementById('addressdetails').innerHTML=output;
+    })
+
+//     const getData = async () => {
+//   const f1_data = await fetch(URL)
+//     .then((res) => res.json());
+
+//   let output='';
+//   output+='<h3>'+ f1_data['phone'] +'</h3>';
+//   console.log(output);
+//    console.log(f1_data['phone']);  
+//    document.getElementById('order-details').innerHTML=output;
+ 
+//     }
+// getData();
+  // console.log(data);
+  
+  orderURL='http://localhost/PerM/backend/PermBackEnd/index.php/orderToProduct/listSingle/'+id;
+  const getDataOrder = async () => {
+    
+    let output='';
+  const f1_data = await fetch(orderURL)
+    .then((res) => res.json());
+    f1_data.forEach(function(order) {
+      var quantity=order.quantity;
+    console.log(quantity);  
+    fetch('http://localhost/PerM/backend/PermBackEnd/index.php/product/listSingle/'+order.product_id)
+    .then((res) => res.json())
+    .then((product) =>{
+
+console.log(product);
+output +=
+                  "<tr>" +
+                  "<td>" +
+                  '<div class="cart-info">' +
+                  '<a href="http://localhost/PerM/frontend/product.php?id='+ product.id +'">'+
+                  '<img src="/../PerM/frontend/images/'+product.image_name+'" alt="">' +
+                  '</a>'+
+                  "<div>" +
+                  '<p class="scris">' +
+                  product.perfume_name +
+                  "</p>" +
+                  "</div>" +
+                  "</div>" +
+                  "</td>" +
+                  '<td>' +
+                  '<p>'+ quantity +'</p>' +
+                  '</td>' +
+                  "<td>" +
+                  '$'+(product.price*quantity) +
+                  "</td>" +
+                  "</tr>";
+                  console.log(output);
+                  document.getElementById('cartproducts').innerHTML=output;
+
+    }) 
+    });
+   
+    
+    
+    }
+    getDataOrder();
+    document.getElementById('profile').style.display='contents';
+   document.getElementById('logout').style.display='contents';
+</script>
+
+<script src="searchBar.js"></script>
+<script src="app.js"></script>
+</html>
