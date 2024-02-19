@@ -6,17 +6,17 @@ Welcome to PerM, a simple yet elegant e-commerce platform dedicated to the world
 
 ## Key Features
 
-* Curated Fragrance Collection: A handpicked selection of high-quality scents, ranging from timeless classics to contemporary favorites.
-* Easy Navigation: A clean and intuitive interface ensures you find your desired fragrance with ease.
-* Product Details: Each fragrance is accompanied by a concise description, including scent notes and customer reviews.
-* Responsive Design: Whether on a desktop or a mobile device, enjoy a seamless shopping experience.
-* Admin Accounts: Visualize your sales by brand and perfume family, and download it in PDF
+* **Curated Fragrance Collection**: A handpicked selection of high-quality scents, ranging from timeless classics to contemporary favorites.
+* **Easy Navigation**: A clean and intuitive interface ensures you find your desired fragrance with ease.
+* **Product Details**: Each fragrance is accompanied by a concise description, including scent notes and customer reviews.
+* **Responsive Design**: Whether on a desktop or a mobile device, enjoy a seamless shopping experience.
+* **Admin Accounts**: Visualize your sales by brand and perfume family, and download it in PDF
 
 ## Technologies
 
-* Frontend: HTML, CSS, JavaScript
-* Backend: PHP
-* Database: MySQL
+* **Frontend**: HTML, CSS, JavaScript
+* **Backend**: PHP
+* **Database**: MySQL
 
 ##Images 
 
